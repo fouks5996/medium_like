@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "./_font_face.css";
+
+/* body{
+   max-width: 1500px;
+   margin: 0 auto;
+} */

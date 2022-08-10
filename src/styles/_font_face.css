@@ -1,0 +1,30 @@
+
+@font-face {
+   font-family: "Sohne Light" ;
+   src: url(../../public/fonts/TestSöhne-Extraleicht.otf);
+ }
+ 
+ @font-face {
+   font-family: "Sohne Regular" ;
+   src: url(../../public/fonts/TestSöhne-Leicht.otf);
+ }
+ @font-face {
+   font-family: "Sohne Medium" ;
+   src: url(../../public/fonts/TestSöhne-Buch.otf);
+ }
+ 
+ @font-face {
+   font-family: "Sohne Semi-Bold" ;
+   src: url(../../public/fonts/TestSöhne-Kräftig.otf);
+ }
+ 
+ @font-face {
+   font-family: "Sohne Bold" ;
+   src: url(../../public/fonts/TestSöhne-Halbfett.otf);
+ }
+
+ @font-face {
+   font-family: "GT super" ;
+   src: url(../../public/fonts/GT-Super-Display-Regular.woff2);
+ }
+
