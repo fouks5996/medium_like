@@ -10,11 +10,16 @@ function Cards() {
 	const [loading2, writers] = useFetch(url1);
 
 	return (
-		<div className='w-3/5 flex flex-col gap-14'>
+		<div className='w-3/5 flex flex-col gap-10 '>
 			{!loading &&
 				!loading2 &&
 				articles.data.map(({ id, attributes }) => (
-					<Card attributes={attributes} writers={writers} id={id} />
+					<Card
+						attributes={attributes}
+						writers={writers}
+						id={id}
+						allowTag={true}
+					/>
 				))}
 		</div>
 	);

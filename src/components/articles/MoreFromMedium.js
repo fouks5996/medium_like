@@ -9,13 +9,6 @@ function MoreFromMedium({ articleId, show }) {
 	const [loading, ids] = useFetch(
 		"http://localhost:1337/api/articles?fields=id"
 	);
-	const [confirm, articles] = useFetch(
-		`http://localhost:1337/api/articles?filters[id][$in]=${id[0]}&filters[id][$in]=${id[1]}&filters[id][$in]=${id[2]}&populate=author.picture`
-	);
-
-	const [confirmImage, images] = useFetch(
-		`http://localhost:1337/api/articles?filters[id][$in]=${id[0]}&filters[id][$in]=${id[1]}&filters[id][$in]=${id[2]}&populate=*`
-	);
 
 	useEffect(() => {
 		if (!loading) {
@@ -29,6 +22,14 @@ function MoreFromMedium({ articleId, show }) {
 		}
 		return;
 	}, [articleId, ids.data, loading, setId]);
+
+	const [confirm, articles] = useFetch(
+		`http://localhost:1337/api/articles?filters[id][$in]=${id[0]}&filters[id][$in]=${id[1]}&filters[id][$in]=${id[2]}&populate=author.picture`
+	);
+
+	const [confirmImage, images] = useFetch(
+		`http://localhost:1337/api/articles?filters[id][$in]=${id[0]}&filters[id][$in]=${id[1]}&filters[id][$in]=${id[2]}&populate=*`
+	);
 
 	return (
 		<div className='flex flex-col gap-2 mt-2 '>

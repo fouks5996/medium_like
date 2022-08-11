@@ -21,7 +21,6 @@ function UserPicSideBar({ userInfo, id }) {
 
 			<div className='flex items-center gap-3'>
 				<UserButton text='follow' size='text-sm' paddingX='px-5' />
-				<UserButton text={<EmailIcon />} paddingX='px-2' />
 			</div>
 		</div>
 	);

@@ -13,7 +13,10 @@ function UserArticles({ articles }) {
 								{article.attributes.title}
 							</h1>
 						</Link>
-						<p className='mb-4'> {article.attributes.description} </p>
+						<p className='mb-4 font-reg text-base'>
+							{" "}
+							{article.attributes.description}{" "}
+						</p>
 						<ArticleInfo attributes={article.attributes} allowTag={true} />
 					</div>
 					<img

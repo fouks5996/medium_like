@@ -9,6 +9,8 @@ function OtherPost({ articleInfo }) {
 		`http://localhost:1337/api/articles/${articleInfo.id}?populate=*`
 	);
 
+	console.log(articleImage);
+
 	return (
 		<div>
 			{!loading && (

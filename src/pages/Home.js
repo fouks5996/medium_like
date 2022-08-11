@@ -33,7 +33,7 @@ function Home() {
 			<div className='w-full flex justify-center border-t-black border-b border-b-gray_light px-7'>
 				<div className='flex justify-between max-w-[1250px] w-full py-16 static'>
 					<Cards />
-					<TagHome />
+					<TagHome text='DISCOVER MORE OF WHAT MATTERS TO YOU' />
 				</div>
 			</div>
 		</div>

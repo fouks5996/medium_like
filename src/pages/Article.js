@@ -1,33 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import OtherPost from "../components/articles/MoreFromUser";
 import UserButton from "../components/atoms/buttons/UserButton";
 import UserPicArticle from "../components/users/UserPicArticle";
-import CurrentNavbar from "../components/navigation/CurrentNavbar";
 import UserSideBar from "../components/users/UserSideBar";
 import useFetch from "../hooks/useFetch";
 import EmailIcon from "../svg/EmailIcon";
+import Layout from "../components/layout/Layout";
 
 function Article() {
 	let { id } = useParams();
-	const [user, setUser] = useState();
-	const [article, setArticle] = useState();
-	const [go, setGo] = useState(false);
 	const [loading, articleData] = useFetch(
 		`http://localhost:1337/api/articles/${id}?populate=author.picture,tag,author.articles`
 	);
-
 	const [loading2, articleImg] = useFetch(
 		`http://localhost:1337/api/articles/${id}?populate=*`
 	);
-
-	useEffect(() => {
-		if (!loading && !loading2) {
-			setUser(articleData.data.attributes.author.data.attributes);
-			setArticle(articleData.data.attributes);
-			setGo(true);
-		}
-	}, [loading, articleImg, loading2]);
 
 	window.scrollTo({
 		top: 0,
@@ -35,18 +23,14 @@ function Article() {
 	});
 
 	return (
-		<div>
-			{go && (
-				<div className='flex justify-center my-0 mx-auto max-w-[1550px]'>
-					<div className='w-[6.8%]'>
-						<CurrentNavbar />
-					</div>
-
-					<div className='w-5/6 '>
-						<div className='px-32 py-14'>
+		<Layout>
+			{!loading && !loading2 && (
+				<div className='flex justify-center'>
+					<div className='w-5/6 ml-20'>
+						<div className='px-8 xs:px-16 lg:px-32 py-14'>
 							<UserPicArticle
-								userInfo={user}
-								articleInfo={article}
+								userInfo={articleData.data.attributes.author.data.attributes}
+								articleInfo={articleData.data.attributes}
 								id={articleData.data.attributes.author.data.id}
 							/>
 							<h1 className='text-4xl font-bold mt-10 mb-3'>
@@ -69,34 +53,49 @@ function Article() {
 							<div className='flex justify-between py-6'>
 								<div>
 									<h1 className='font-sbold text-xl text-black_light mb-2'>
-										More from {user.name} {user.familyName}
+										More from{" "}
+										{articleData.data.attributes.author.data.attributes.name}{" "}
+										{
+											articleData.data.attributes.author.data.attributes
+												.familyName
+										}
 									</h1>
-									<p className='font-md text-sm text-gray'> {user.bio} </p>
+									<p className='font-md text-sm text-gray'>
+										{" "}
+										{
+											articleData.data.attributes.author.data.attributes.bio
+										}{" "}
+									</p>
 								</div>
 								<div className='flex items-center gap-3'>
 									<UserButton text='follow' size='text-sm' paddingX='px-5' />
-									<UserButton text={<EmailIcon />} paddingX='px-2' />
 								</div>
 							</div>
 							<div className='mt-6'>
-								{user.articles.data
-									.filter((article) => article.id !== parseInt(id))
-									.map((article) => (
-										<OtherPost articleInfo={article} />
-									))}
+								{articleData.data.attributes.author.data.attributes.articles
+									.data.length === 1 ? (
+									<p className='mb-10 font-reg'>
+										{articleData.data.attributes.author.data.attributes.name}{" "}
+										n'a pas écrit d'autres articles
+									</p>
+								) : (
+									articleData.data.attributes.author.data.attributes.articles.data
+										.filter((article) => article.id !== parseInt(id))
+										.map((article) => <OtherPost articleInfo={article} />)
+								)}
 							</div>
 						</div>
 					</div>
 					<div className='w-2/6 border-l border-gray_light'>
 						<UserSideBar
-							userInfo={user}
+							userInfo={articleData.data.attributes.author.data.attributes}
 							articleId={articleImg.data.id}
 							userId={articleData.data.attributes.author.data.id}
 						/>
 					</div>
 				</div>
 			)}
-		</div>
+		</Layout>
 	);
 }
 
