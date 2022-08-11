@@ -38,7 +38,7 @@ function Article() {
 		<div>
 			{go && (
 				<div className='flex justify-center my-0 mx-auto max-w-[1550px]'>
-					<div className='w-1/12'>
+					<div className='w-[6.8%]'>
 						<CurrentNavbar />
 					</div>
 
@@ -79,9 +79,11 @@ function Article() {
 								</div>
 							</div>
 							<div className='mt-6'>
-								{user.articles.data.map((article) => (
-									<OtherPost articleInfo={article} />
-								))}
+								{user.articles.data
+									.filter((article) => article.id !== parseInt(id))
+									.map((article) => (
+										<OtherPost articleInfo={article} />
+									))}
 							</div>
 						</div>
 					</div>

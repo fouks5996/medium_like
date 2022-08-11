@@ -4,6 +4,7 @@ import UserArticles from "../components/articles/UserArticles";
 import CurrentNavbar from "../components/navigation/CurrentNavbar";
 import UserSideBar from "../components/users/UserSideBar";
 import useFetch from "../hooks/useFetch";
+
 function User(props) {
 	const { id } = useParams();
 
@@ -18,13 +19,22 @@ function User(props) {
 	return (
 		<div>
 			{!loading && !loading1 && (
-				<div className='flex justify-center my-0 mx-auto max-w-[1550px]'>
-					<div className='w-[7.8%]'>
+				<div className={`flex justify-center  my-0 mx-auto max-w-[1550px] `}>
+					<div className='w-[6.8%]'>
 						<CurrentNavbar />
 					</div>
 
 					<div className='w-5/6 '>
-						<div className='w-full h-44 bg-yellow'></div>
+						<div className={`w-full h-44  `}>
+							<img
+								alt='cover'
+								className='w-full h-full object-cover object-middle'
+								src={
+									"http://localhost:1337" +
+									user.data.attributes.cover.data.attributes.url
+								}
+							/>
+						</div>
 						<div className='px-32 py-14 relative'>
 							<h1 className="text-5xl font-bold  mb-3'">
 								{user.data.attributes.name} {user.data.attributes.familyName}

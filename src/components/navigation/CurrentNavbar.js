@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 function CurrentNavbar() {
 	return (
-		<div className='h-screen flex flex-col fixed bg-white  justify-center  items-center gap-12 pr-8 ml-10  border-gray_light border-r'>
+		<div className='h-screen flex flex-col fixed bg-white  justify-center  items-center gap-12 pr-7 ml-7  border-gray_light border-r'>
 			<Link to='/'>
 				<LogoIcon />
 			</Link>

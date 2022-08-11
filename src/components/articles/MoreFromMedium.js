@@ -36,7 +36,7 @@ function MoreFromMedium({ articleId, show }) {
 			{!confirm &&
 				show &&
 				articles.data.map((article) => (
-					<div className='flex py-3 gap-4'>
+					<div className='flex justify-between py-3 gap-4'>
 						<div>
 							<UserPic
 								picture={
@@ -52,7 +52,7 @@ function MoreFromMedium({ articleId, show }) {
 							<Link
 								to={"/article/" + article.id}
 								className='font-bold text-base w-fit '>
-								<h1 className='max-w-[220px] mt-2'>
+								<h1 className='max-w-[220px] mt-1'>
 									{" "}
 									{article.attributes.title}{" "}
 								</h1>
@@ -64,7 +64,7 @@ function MoreFromMedium({ articleId, show }) {
 								.map((filtered) => (
 									<img
 										alt='cover'
-										className='w-16 h-16 object-cover'
+										className='w-14 h-14 object-cover'
 										src={
 											"http://localhost:1337" +
 											filtered.attributes.thumbnail.data.attributes.url

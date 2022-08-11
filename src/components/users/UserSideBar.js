@@ -29,7 +29,7 @@ function UserSideBar({ userInfo, articleId, userId, show }) {
 
 			<UserPicSideBar userInfo={userInfo} id={userId} />
 
-			<div className='my-8'>
+			<div className='my-10'>
 				<MoreFromMedium articleId={articleId} show={show} />
 			</div>
 		</div>

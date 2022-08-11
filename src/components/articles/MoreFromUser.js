@@ -12,7 +12,7 @@ function OtherPost({ articleInfo }) {
 	return (
 		<div>
 			{!loading && (
-				<div className='flex  gap-10 border-b border-gray_light pb-6 mb-5'>
+				<div className='flex justify-between gap-10 border-b border-gray_light pb-6 mb-5'>
 					<div>
 						<Link
 							to={"/article/" + articleInfo.id}
