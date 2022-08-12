@@ -1,10 +1,13 @@
 import React from "react";
+import Layout from "../components/layout/Layout";
 
 function UserConnected(props) {
 	return (
-		<div className='bg-red-500 h-screen px-24'>
-			hello comment ca va inc les gens
-		</div>
+		<Layout>
+			<div className='bg-red-500 h-screen px-24'>
+				hello comment ca va inc les gens
+			</div>
+		</Layout>
 	);
 }
 

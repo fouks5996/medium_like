@@ -35,7 +35,7 @@ function Story(props) {
 		if (!loading) {
 			fetch("http://localhost:1337/api/articles", requestOptions)
 				.then((response) => response.json())
-				.then((res) => console.log(res));
+				.then((res) => res);
 		}
 	};
 

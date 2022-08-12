@@ -6,7 +6,6 @@ import Article from "./pages/Article";
 import Write from "./pages/Write";
 import User from "./pages/User";
 import Tag from "./pages/Tag";
-import CurrentNavbar from "./components/navigation/CurrentNavbar";
 import { useState } from "react";
 import UserConnected from "./pages/UserConnected";
 
@@ -29,7 +28,6 @@ function App() {
 				</>
 			) : (
 				<>
-					<CurrentNavbar />
 					<Routes>
 						<Route path='/' element={<UserConnected />}></Route>
 						<Route path='article/:id' element={<Article />}></Route>

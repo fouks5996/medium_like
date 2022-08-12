@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import OtherPost from "../components/articles/MoreFromUser";
 import UserButton from "../components/atoms/buttons/UserButton";
 import UserPicArticle from "../components/users/UserPicArticle";
 import UserSideBar from "../components/users/UserSideBar";
 import useFetch from "../hooks/useFetch";
-import EmailIcon from "../svg/EmailIcon";
 import Layout from "../components/layout/Layout";
+import Likes from "../components/articles/Likes";
 
 function Article() {
 	let { id } = useParams();
+	const [liked, setLiked] = useState(0);
+
 	const [loading, articleData] = useFetch(
 		`http://localhost:1337/api/articles/${id}?populate=author.picture,tag,author.articles`
 	);
@@ -28,11 +30,19 @@ function Article() {
 				<div className='flex justify-center'>
 					<div className='w-5/6 ml-20'>
 						<div className='px-8 xs:px-16 lg:px-32 py-14'>
-							<UserPicArticle
-								userInfo={articleData.data.attributes.author.data.attributes}
-								articleInfo={articleData.data.attributes}
-								id={articleData.data.attributes.author.data.id}
-							/>
+							<div className='flex justify-between items-center'>
+								<UserPicArticle
+									userInfo={articleData.data.attributes.author.data.attributes}
+									articleInfo={articleData.data.attributes}
+									id={articleData.data.attributes.author.data.id}
+								/>{" "}
+								<Likes
+									articleId={articleData.data.id}
+									liked={liked}
+									number={articleData.data.attributes.likes}
+								/>
+							</div>
+
 							<h1 className='text-4xl font-bold mt-10 mb-3'>
 								{articleImg.data.attributes.title}
 							</h1>
